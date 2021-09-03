@@ -9,7 +9,7 @@ while f1 < 4000000:
     f = f1 + f2
     f2, f1 = f1, f
 
-    if (not f % 2): # if divisible by 2
+    if (f % 2 == 0): # if divisible by 2
         sum += f
 
 print(sum)
