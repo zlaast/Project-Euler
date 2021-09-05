@@ -23,3 +23,42 @@ grid = [
     [20, 73, 35, 29, 78, 31, 90,  1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57,  5, 54],
     [ 1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52,  1, 89, 19, 67, 48]
 ]
+
+# up-down
+ud = max(
+    grid[x][y] *
+    grid[x+1][y] *
+    grid[x+2][y] *
+    grid[x+3][y]
+    for x in range(0, 17)
+    for y in range(0, 20))
+
+# left-right
+lr = max(
+    grid[x][y] *
+    grid[x][y+1] *
+    grid[x][y+2] *
+    grid[x][y+3]
+    for x in range(0, 20)
+    for y in range(0, 17))
+
+
+# Diagonal down
+dd = max(
+    grid[x][y] *
+    grid[x+1][y+1] *
+    grid[x+2][y+2] *
+    grid[x+3][y+3]
+    for x in range(0, 17)
+    for y in range(0, 17))
+
+# Diagonal up
+du = max(
+    grid[x+3][y] *
+    grid[x+2][y+1] *
+    grid[x+1][y+2] *
+    grid[x+0][y+3]
+    for x in range(0, 17)
+    for y in range(0, 17))
+
+print(max(ud, lr, dd, du))
