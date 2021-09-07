@@ -2,7 +2,7 @@
 # Smallest Multiple
 
 import math
-from soe import soe     # This was written by me
+from PEF import soe     # This was written by me
 
 max_product = 20
 primes = soe(max_product)

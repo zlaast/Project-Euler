@@ -1,7 +1,7 @@
 # Project Euler: Problem 7
 # 10001st prime
 
-from soe import soe
+from PEF import soe
 
 number = 0
 primes_cpy = []

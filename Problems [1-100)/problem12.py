@@ -4,7 +4,7 @@
 # https://www2.math.upenn.edu/~deturck/m170/wk2/numdivisors.html
 
 from collections import Counter
-from soe import soe
+from PEF import soe
 
 counter = 1
 triangle_number = 1
