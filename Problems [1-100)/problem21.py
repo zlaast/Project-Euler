@@ -1,8 +1,7 @@
 # Project Euler: Problem 21
 # Amicable numbers
 
-from PEF import prime_check as pc
-from PEF import factorization as f
+from PEF import factorization as f, prime_check as pc
 
 amicables = []
 for a_ in range(1, 10001):
