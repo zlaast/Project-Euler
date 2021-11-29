@@ -4,8 +4,6 @@
 # https://en.wikipedia.org/wiki/Repeating_decimal
 # https://en.wikipedia.org/wiki/Multiplicative_order
 
-# The length of the repetend (the repeating decimal part) is equal to the order of (10 % p)
-
 from PEF import soe
 
 primes = soe(1000)

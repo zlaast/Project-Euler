@@ -1,5 +1,6 @@
 # Project Euler: Problem 7
 # 10001st prime
+# References: 3
 
 from PEF import soe
 

@@ -1,5 +1,6 @@
 # Project Euler: Problem 25
 # 1000-digit Fibonacci number
+# Reference: 2
 
 index = 1
 length = 0
