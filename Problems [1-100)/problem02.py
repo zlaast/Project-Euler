@@ -1,16 +1,17 @@
 # Project Euler: Problem 2
 # Even Fibonacci Numbers
 
-f2 = 0
-f1 = 1
+fp = 0                  # previous fibonacci number
+fc = 1                  # current fibonacci number
 sum = 0
 
-while f1 < 4000000:
-    f = f1 + f2
-    f2, f1 = f1, f
+while fc < 4000000:
+    fn = fc + fp        # fn is the next fibonacci number
 
-    if (f % 2 == 0): # if divisible by 2
-        sum += f
+    if (fn % 2 == 0):   # if next is divisible by 2
+        sum += fn
+
+    fp = fc             # current becomes previous
+    fc = fn             # next becomes current
 
 print(sum)
-    
