@@ -9,12 +9,12 @@ def soe(n):
     primes = []
     potential_primes = [True]*(n+1)
 
-    for number in range(2, n+1):
-        if potential_primes[number]:
-            primes.append(number)
+    for i in range(2, n+1):
+        if potential_primes[i]:
+            primes.append(i)
 
             # Eliminate multiples. They aren't prime
-            for not_prime in range(number**2, n+1, number):
+            for not_prime in range(i**2, n+1, i):
                 potential_primes[not_prime] = False
     
     return primes
