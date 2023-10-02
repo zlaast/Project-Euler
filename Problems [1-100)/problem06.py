@@ -1,15 +1,10 @@
 # Project Euler: Problem 6
 # Sum square difference
 
-sum_square = 0
-square_sum = 0
+n = 100
 
-for num in range(1, 101):
-    sum_square += num**2
-
-for num in range(1, 101):
-    square_sum += num
-
-square_sum = square_sum**2
+a = n*(n+1)
+sum_square = (a*(2*n + 1))/6
+square_sum = (a/2)**2
 
 print(square_sum-sum_square)
