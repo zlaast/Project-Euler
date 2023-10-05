@@ -1,6 +1,8 @@
 # Project Euler: Problem 8
 # Largest product in a series
 
+import math
+
 number = '''
 73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843
@@ -22,16 +24,14 @@ number = '''
 84580156166097919133875499200524063689912560717606
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450
-'''.replace("\n", "")
+'''.replace('\n','')
 
 number_list = [int(i) for i in number]
 
 max = 0
-for i in range(13, 1000):
-    product = 1
-    for ii in range(i-13, i):
-        product *= number_list[ii]
-    
+for i in range (0, len(number_list)-13):
+    product = math.prod(number_list[i:i+13])
+
     if (product > max):
         max = product
 
