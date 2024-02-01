@@ -1,37 +1,32 @@
 # Project Euler: Problem 12
-# Highly divisible triangular number
+# Highly Divisible Triangular Number
 
-# https://www2.math.upenn.edu/~deturck/m170/wk2/numdivisors.html
-
+import math
 from collections import Counter
 from PEF import soe
 
 counter = 1
 triangle_number = 1
-primes = soe(5000)
+primes = soe(20)
 
 while True:
-    # Increase the counter
+    # Generate Triangle Number
     counter += 1
-
-    # Generate triangle number, and store it in a temp variable
     triangle_number += counter
-    temp = triangle_number
 
-    # Perform prime factorization on temp variable
-    ls = []
+    # Create copy that will be factored
+    to_be_factored = triangle_number
+
+    # Perform prime factorization on copy
+    prime_factors = []
     for prime in primes:
-        while (temp % prime == 0):
-            temp //= prime
-            ls.append(prime)
+        while(to_be_factored % prime == 0):
+            to_be_factored = to_be_factored // prime
+            prime_factors.append(prime)
 
-    # Count the number of prime factors, add one to each count, then multiply the counts
-    num_divisors = 1
-    factor_count = Counter(ls)
-    for factor in factor_count.values():
-        num_divisors *= (factor + 1)
+    # Count the number of factors
+    amount_of_factors = math.prod(list(map(lambda prime_count: prime_count + 1, Counter(prime_factors).values())))
 
-    if (num_divisors > 500):
+    if (amount_of_factors > 500):
+        print(triangle_number)
         break
-
-print(triangle_number)
