@@ -1,6 +1,6 @@
 # Project Euler: Problem 15
 # Lattice paths
 
-from math import factorial as f
+from math import comb
 
-print(f(40) // f(20) // f(20))
+print(comb(40, 20))
