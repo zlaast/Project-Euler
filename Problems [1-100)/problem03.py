@@ -2,10 +2,10 @@
 # Largest Prime Factor
 
 from math import sqrt
-from PEF import soe         # This was written by me
+from PEF import soe
 
 number = 600851475143
-primes = soe(round(sqrt(number)))
+primes = soe(10000)
 
 for prime in primes:
     if (number == 1):
@@ -14,3 +14,6 @@ for prime in primes:
     while (number % prime == 0):
         number = number / prime
         print(prime)
+
+if (number != 1):
+    print("Error: Generate larger prime list")

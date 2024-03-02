@@ -7,15 +7,15 @@ def soe(n):
     '''Sieve of Eratosethenes. Finds prime numbers'''
 
     primes = []
-    potential_primes = [True]*(n+1)
+    number_list = [True]*(n+1)
 
     for i in range(2, n+1):
-        if potential_primes[i]:
+        if number_list[i]:
             primes.append(i)
 
             # Eliminate multiples. They aren't prime
-            for not_prime in range(i**2, n+1, i):
-                potential_primes[not_prime] = False
+            for multiple in range(i**2, n+1, i):
+                number_list[multiple] = False
     
     return primes
 
