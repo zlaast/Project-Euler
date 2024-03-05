@@ -1,7 +1,7 @@
 # Project Euler: Problem 18
 # Maximum path sum I
 
-tri = [
+a = [
     [75],
     [95, 64],
     [17, 47, 82],
@@ -19,11 +19,13 @@ tri = [
     [4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23]
 ]
 
-for row in range(len(tri)-1, -1, -1):
-    for el in range(len(tri[row])-1):
-        if (tri[row][el] > tri[row][el+1]):
-            tri[row-1][el] += tri[row][el]
+rows = len(a)-1
+for x in range(rows, -1, -1):
+    columns = len(a[x])-1
+    for y in range(columns):
+        if(a[x][y] > a[x][y+1]):
+            a[x-1][y] += a[x][y]
         else:
-            tri[row-1][el] += tri[row][el+1]
-
-print(tri[0])
+            a[x-1][y] += a[x][y+1]
+        
+print(a[0])
