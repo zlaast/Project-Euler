@@ -6,9 +6,7 @@ from PEF import factor
 amicables = []
 
 for number in reversed(range(2, 10000)):
-    if number in amicables:
-        continue
-    else:
+    if number not in amicables:
         a = sum(factor(number))
         b = sum(factor(a))
 

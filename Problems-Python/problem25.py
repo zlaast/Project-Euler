@@ -1,17 +1,18 @@
 # Project Euler: Problem 25
 # 1000-digit Fibonacci number
-# Reference: 2
 
-index = 1
+i = 1
 length = 0
 
-f2 = 0
-f1 = 1
-while length != 1000:
-    f = f1 + f2
-    f2, f1 = f1, f
+F_n_2 = 0
+F_n_1 = 1
+while length < 1000:
+    F_n = F_n_1 + F_n_2
 
-    length = len(str(f))
-    index += 1
+    F_n_2 = F_n_1
+    F_n_1 = F_n
 
-print(index)
+    length = len(str(F_n))
+    i += 1
+
+print(i)

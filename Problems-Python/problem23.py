@@ -1,36 +1,36 @@
 # Project Euler: Problem 23
 # Non-abundant sums
-# https://en.wikipedia.org/wiki/Abundant_number
 
-from PEF import factorization as f, soe
+from itertools import combinations_with_replacement
+from PEF import factor, soe
 
-# Find all abundant numbers up to 28123
 n = 28124
-abundants = [False] * n
 
-for i in range(2, n):
-    if (sum(f(i)) > i):
-        abundants[i] = True
+# Find all abundant numbers and their multiples
+abundants = [False]*n
+for num in reversed(range(2, n)):
+    if abundants[num] == False:
+        if sum(factor(num)) > num:
+            abundants[num] = True
 
-# Primes aren't abundant. Remove them as well (for now)
-primes = soe(n)
-for prime in primes:
-    abundants[prime] = False
+            for multiple in reversed(range(num, n, num)):
+                abundants[multiple] = True
 
-# Find which numbers cannot be written as the sum of two abundants
-sum_of_two_abundants = [True] * n
-for i in range(2, n):
-    if (abundants[i]):
-        for ii in range(2, n):
-            if (abundants[ii]):
-                if (i + ii < n):
-                    sum_of_two_abundants[i+ii] = False
+# Get our list of abundant numbers
+abundants = [num for num, i in enumerate(abundants) if i == True]
 
-# Sum all the integers that cannot expressed as the sum of two abundant numbers
-# Starts at 1 because 1 cannot be expressed as the sum of two abundants
-total = 1
-for i in range(2, n):
-    if (sum_of_two_abundants[i]):
-        total += i
+# Get sums of two abundants
+combs = combinations_with_replacement(abundants, 2)
+sums = set([sum(pair) for pair in combs])
+sums = [x for x in sums if x < n]
+
+# Get numbers that cannot be written as sum of two abundants
+i = 0
+total = 0
+for number in range(1, n):
+    if number == sums[i]:
+        i += 1
+    else:
+        total += number
 
 print(total)
