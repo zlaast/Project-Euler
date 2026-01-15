@@ -1,26 +1,42 @@
 # Project Euler: Problem 35
 # Circular Primes
 
-# https://oeis.org/A004023
-
-from itertools import combinations
+from collections import deque
 from PEF import soe
 
-n = 100
-primes = soe(n)
-checked_circular = [False]*n
-amount = 0
+# Setup
+total = 13
+primes = soe(1000000)
+circular_primes = [False]*1000000
 
+# Prologue
+cpl = [2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, 97]
+for v in cpl:
+    circular_primes[v] = True
+
+# Solution
 for prime in primes:
+    if circular_primes[prime] == False:
+        str_prime = str(prime)
+        length = len(str_prime)
 
-    if not checked_circular[prime]:
-        circular = [x for x in str(prime)]
-        perms = combinations(circular, len(circular))
+        # Circulate it!
+        if '0' not in str_prime:
+            nums = [prime]
+            buffer = deque(str_prime, maxlen=length)
+            for _ in range(length - 1):
+                left = buffer.popleft()
+                buffer.append(left)
+                nums.append(int(''.join(buffer)))
 
-        i = 0
-        for perm in perms:
-            print(perm)
-            number = int(''.join(perm))
-            checked_circular[number] = True
+            t = 0
+            for num in nums:
+                if num in primes:
+                    t += 1
 
-print(amount-1)
+            if t == len(nums):
+                for num in nums:
+                    circular_primes[num] = True
+                    total += 1
+
+print(total)
